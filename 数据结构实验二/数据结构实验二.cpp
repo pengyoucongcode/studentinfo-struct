@@ -180,6 +180,7 @@ int main()
 	Insert(l, s2, 2);
 	Insert(l, s3, l.length);
 	cout << "我是分割线=================" << endl;
+	cout << "插入三条记录后，顺序表中的情况：" << endl;
 	Show(l);
 	SerachOfIndex(l);
 	SerchOfName(l);
