@@ -169,7 +169,7 @@ int main()
 {
 	FILE *fp1;
 	//D:\\users\\lenovo\\source\\数据结构作业源代码\\数据结构作业1
-	fp1 = fopen_s("scores.txt", "r");//创建文件句柄，打开用于读取数据
+	fopen_s(&fp1,"scores.txt", "r");//创建文件句柄，打开用于读取数据
 	gradeList l;
 	Create(l, fp1);
 	Show(l);
