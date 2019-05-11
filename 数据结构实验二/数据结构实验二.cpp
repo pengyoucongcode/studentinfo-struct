@@ -31,7 +31,7 @@ void Create(gradeList &l,FILE *p)
 		cout << "打开失败" << endl;
 	//读取学生姓名
 	fseek(p, 31, SEEK_SET);//文件指针移动到距文档开头l个偏移量
-	while (fscanf(p, "%s%d%d%d",
+	while (fscanf_s(p, "%s%d%d%d",
 		&l.data[i].name,
 		&l.data[i].nanlysis,
 		&l.data[i].algebra,
@@ -52,12 +52,12 @@ void Insert(gradeList &l, student &st,int i)
 		{
 			for (int j = l.length; j > i - 1; j--)
 			{
-				strcpy(l.data[j].name, l.data[j - 1].name);
+				strcpy_s(l.data[j].name, l.data[j - 1].name);
 				l.data[j].nanlysis = l.data[j - 1].nanlysis;
 				l.data[j].algebra = l.data[j - 1].algebra;
 				l.data[j].analGeo = l.data[j - 1].analGeo;
 			}
-			strcpy(l.data[i - 1].name, st.name);
+			strcpy_s(l.data[i - 1].name, st.name);
 			l.data[i - 1].nanlysis = st.nanlysis;
 			l.data[i - 1].algebra = st.algebra;
 			l.data[i - 1].analGeo = st.analGeo;
@@ -65,7 +65,7 @@ void Insert(gradeList &l, student &st,int i)
 		}
 		else if (i == l.length)
 		{
-			strcpy(l.data[i - 1].name, st.name);
+			strcpy_s(l.data[i - 1].name, st.name);
 			l.data[i - 1].nanlysis = st.nanlysis;
 			l.data[i - 1].algebra = st.algebra;
 			l.data[i - 1].analGeo = st.analGeo;
@@ -110,14 +110,14 @@ void SerchOfName(gradeList &l)
 	while (t)
 	{
 		cin >> str;
-		if (strcmp(str, "No") == 0)
+		if (strcmp_s(str, "No") == 0)
 			break;
 		else
 		{
 			int i;
 			for (i = 0; i < l.length; i++)
 			{
-				if (strcmp(l.data[i].name, str) == 0)
+				if (strcmp_s(l.data[i].name, str) == 0)
 				{
 					cout << str << "的记录为:" << l.data[i].name << " "
 						<< l.data[i].nanlysis << " "
@@ -141,12 +141,12 @@ void Pop(gradeList &l)
 	bool key = false;
 	for (i = 0; i < l.length; i++)
 	{
-		if (strcmp(l.data[i].name, str) == 0)
+		if (strcmp_s(l.data[i].name, str) == 0)
 		{
 			cout << "已找到此人记录，是否确认要删除？yes/no:";
 			char s[4];
 			cin >> s;
-			if(strcmp(s,"yes")==0)
+			if(strcmp_s(s,"yes")==0)
 				key = true;
 			break;
 		}
@@ -157,7 +157,7 @@ void Pop(gradeList &l)
 	{
 		for (int j = i; j < l.length; j++)
 		{
-			strcpy(l.data[j].name, l.data[j + 1].name);
+			strcpy_s(l.data[j].name, l.data[j + 1].name);
 			l.data[j].nanlysis = l.data[j + 1].nanlysis;
 			l.data[j].algebra = l.data[j + 1].algebra;
 			l.data[j].analGeo = l.data[j + 1].analGeo;
@@ -169,7 +169,7 @@ int main()
 {
 	FILE *fp1;
 	//D:\\users\\lenovo\\source\\数据结构作业源代码\\数据结构作业1
-	fp1 = fopen("scores.txt", "r");//创建文件句柄，打开用于读取数据
+	fp1 = fopen_s("scores.txt", "r");//创建文件句柄，打开用于读取数据
 	gradeList l;
 	Create(l, fp1);
 	Show(l);
