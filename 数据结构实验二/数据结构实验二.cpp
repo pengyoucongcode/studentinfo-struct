@@ -110,14 +110,14 @@ void SerchOfName(gradeList &l)
 	while (t)
 	{
 		cin >> str;
-		if (strcmp_s(str, "No") == 0)
+		if (strcmp(str, "No") == 0)
 			break;
 		else
 		{
 			int i;
 			for (i = 0; i < l.length; i++)
 			{
-				if (strcmp_s(l.data[i].name, str) == 0)
+				if (strcmp(l.data[i].name, str) == 0)
 				{
 					cout << str << "的记录为:" << l.data[i].name << " "
 						<< l.data[i].nanlysis << " "
@@ -141,12 +141,12 @@ void Pop(gradeList &l)
 	bool key = false;
 	for (i = 0; i < l.length; i++)
 	{
-		if (strcmp_s(l.data[i].name, str) == 0)
+		if (strcmp(l.data[i].name, str) == 0)
 		{
 			cout << "已找到此人记录，是否确认要删除？yes/no:";
 			char s[4];
 			cin >> s;
-			if(strcmp_s(s,"yes")==0)
+			if(strcmp(s,"yes")==0)
 				key = true;
 			break;
 		}
